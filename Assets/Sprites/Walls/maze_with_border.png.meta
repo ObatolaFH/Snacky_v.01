@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c5ae888b19355804fb1b4b04069f278d
+guid: 0cd755d0f13127144b9a657e0bb52441
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,21 +101,93 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: maze_with_border_0
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 846
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f664ae83d0b68474eaa70526ddf3bf50
+      internalID: 1134934341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maze_with_border_1
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 385
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4ef67e534c41d41a7e8019ae697364
+      internalID: 679267350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maze_with_border_2
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 386
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c210d7670ed75d499f6f4dff61be4ef
+      internalID: 1726683800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maze_with_border_3
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 336
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c9a202ed747914e9f1483cf329bf08
+      internalID: 975527580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +198,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      maze_with_border_0: 1134934341
+      maze_with_border_1: 679267350
+      maze_with_border_3: 975527580
+      maze_with_border_4: -540476385
+      maze_with_border_2: 1726683800
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
