@@ -63,6 +63,11 @@ public class mazeBuilder : MonoBehaviour
         {
             for (int y = 0; y < maze.GetLength(1); y++)
             {
+                if (x == 16 && y == 12)
+                {
+                    continue;
+                }
+
                 Vector3 eulerRotation = new Vector3(mazeObjects[maze[x, y]].transform.eulerAngles.x, mazeObjects[maze[x, y]].transform.eulerAngles.y, mazeObjects[maze[x, y]].transform.eulerAngles.z);
 
                 GameObject clone = Instantiate(mazeObjects[maze[x, y]], new Vector3(transform.position.x + (y * factor), transform.position.y - (x * factor), 0), Quaternion.Euler(eulerRotation));
