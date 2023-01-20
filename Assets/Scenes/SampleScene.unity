@@ -428,6 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 187290977}
   - component: {fileID: 187290978}
+  - component: {fileID: 187290979}
   m_Layer: 0
   m_Name: SnackySprite
   m_TagString: Untagged
@@ -502,6 +503,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &187290979
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187290976}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b0045a536a5bc5347875377902ab7e2c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &279924327
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,6 +3292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97501470be087a749b771284be173914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &2108209490
 MonoBehaviour:
   m_ObjectHideFlags: 0
