@@ -22,10 +22,10 @@ public class mazeBuilder : MonoBehaviour
                                     { 2, 0,22, 0, 0, 0,30, 0, 0, 0, 0, 0,22, 0, 0, 0, 0, 0,30, 0, 0, 0,22, 0, 2 },
                                     { 2, 0,22, 0,29, 0, 0, 0,17,21,21,21,25,21,21,21,18, 0, 0, 0,29, 0,22, 0, 2 },
                                     { 2, 0,30, 0,20,21,18, 0,22, 0, 0, 0, 0, 0, 0, 0,22, 0,17,21,19, 0,30, 0, 2 },
-                                    { 2, 0, 0, 0, 0, 0,22, 0,22, 0, 3, 1, 0, 1, 4, 0,22, 0,22, 0, 0, 0, 0, 0, 2 },
-                                    { 6, 1, 1, 1, 1, 0,30, 0,30, 0, 2, 0, 0, 0, 2, 0,30, 0,30, 0, 1, 1, 1, 1, 5 },
-                                    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                    { 3, 1, 1, 1, 1, 0,29, 0,29, 0, 2, 0, 0, 0, 2, 0,29, 0,29, 0, 1, 1, 1, 1, 4 },
+                                    { 2, 0, 0, 0, 0, 0,22, 0,22, 0, 3, 1,31, 1, 4, 0,22, 0,22, 0, 0, 0, 0, 0, 2 },
+                                    { 6, 1, 1, 1, 1, 0,30, 0,30, 0, 2,31,31,31, 2, 0,30, 0,30, 0, 1, 1, 1, 1, 5 },
+                                    {31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0,31 },
+                                    { 3, 1, 1, 1, 1, 0,29, 0,29, 0, 2,31,31,31, 2, 0,29, 0,29, 0, 1, 1, 1, 1, 4 },
                                     { 2, 0, 0, 0, 0, 0,22, 0,22, 0, 6, 1, 1, 1, 5, 0,22, 0,22, 0, 0, 0, 0, 0, 2 },
                                     { 2, 0,29, 0,17,21,19, 0,22, 0, 0, 0, 0, 0, 0, 0,22, 0,20,21,18, 0,29, 0, 2 },
                                     { 2, 0,22, 0,30, 0, 0, 0,20,21,21,21,26,21,21,21,19, 0, 0, 0,30, 0,22, 0, 2 },
@@ -65,9 +65,9 @@ public class mazeBuilder : MonoBehaviour
             {
                 Vector3 eulerRotation = new Vector3(mazeObjects[maze[x, y]].transform.eulerAngles.x, mazeObjects[maze[x, y]].transform.eulerAngles.y, mazeObjects[maze[x, y]].transform.eulerAngles.z);
 
-
                 GameObject clone = Instantiate(mazeObjects[maze[x, y]], new Vector3(transform.position.x + (y * factor), transform.position.y - (x * factor), 0), Quaternion.Euler(eulerRotation));
-                clone.name = mazeObjects[maze[x, y]].name + x + " " + y;
+
+                clone.name = x + " " + y + ": " + mazeObjects[maze[x, y]].name;
                 clone.transform.parent = parent;
             }
         }
