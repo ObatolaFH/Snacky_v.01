@@ -14,6 +14,9 @@ public class SnackController : MonoBehaviour
     public GameObject snackUp;
     public GameObject snackDown;
 
+    public bool isWarpRightNode = false;
+    public bool isWarpLeftNode = false;
+
     // Start is called before the first frame update
     void Start()
     {
