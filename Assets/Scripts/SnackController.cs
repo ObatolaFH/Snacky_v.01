@@ -76,4 +76,28 @@ public class SnackController : MonoBehaviour
     {
         
     }
+
+    public GameObject GetSnackFromDirection(string direction)
+    {
+        if (direction == "left" && canMoveLeft)
+        {
+            return snackLeft;
+        }
+        else if (direction == "right" && canMoveRight)
+        {
+            return snackRight;
+        }
+        else if (direction == "down" && canMoveDown)
+        {
+            return snackDown;
+        }
+        else if (direction == "up" && canMoveUp)
+        {
+            return snackUp;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
