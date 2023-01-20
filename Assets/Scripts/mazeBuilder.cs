@@ -27,7 +27,7 @@ public class mazeBuilder : MonoBehaviour
                                     {31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0,31 },
                                     { 3, 1, 1, 1, 1, 0,29, 0,29, 0, 2,31,31,31, 2, 0,29, 0,29, 0, 1, 1, 1, 1, 4 },
                                     { 2, 0, 0, 0, 0, 0,22, 0,22, 0, 6, 1, 1, 1, 5, 0,22, 0,22, 0, 0, 0, 0, 0, 2 },
-                                    { 2, 0,29, 0,17,21,19, 0,22, 0, 0, 0, 0, 0, 0, 0,22, 0,20,21,18, 0,29, 0, 2 },
+                                    { 2, 0,29, 0,17,21,19, 0,22, 0, 0, 0,31, 0, 0, 0,22, 0,20,21,18, 0,29, 0, 2 },
                                     { 2, 0,22, 0,30, 0, 0, 0,20,21,21,21,26,21,21,21,19, 0, 0, 0,30, 0,22, 0, 2 },
                                     { 2, 0,22, 0, 0, 0,29, 0, 0, 0, 0, 0,22, 0, 0, 0, 0, 0,29, 0, 0, 0,22, 0, 2 },
                                     { 8,21,23, 0,17,21,25,21,18, 0,29, 0,30, 0,29, 0,17,21,25,21,18, 0,24,21, 9 },
@@ -63,11 +63,6 @@ public class mazeBuilder : MonoBehaviour
         {
             for (int y = 0; y < maze.GetLength(1); y++)
             {
-                if (x == 16 && y == 12)
-                {
-                    continue;
-                }
-
                 Vector3 eulerRotation = new Vector3(mazeObjects[maze[x, y]].transform.eulerAngles.x, mazeObjects[maze[x, y]].transform.eulerAngles.y, mazeObjects[maze[x, y]].transform.eulerAngles.z);
 
                 GameObject clone = Instantiate(mazeObjects[maze[x, y]], new Vector3(transform.position.x + (y * factor), transform.position.y - (x * factor), 0), Quaternion.Euler(eulerRotation));
