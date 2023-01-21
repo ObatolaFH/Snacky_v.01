@@ -19,12 +19,15 @@ public class GameManager : MonoBehaviour
     public int score;
     public Text scoreText;
 
-    
-
     public GameObject ghostNodeStart;
     public GameObject ghostNodeCenter;
     public GameObject ghostNodeLeft;
     public GameObject ghostNodeRight;
+
+    public GameObject redGhost;
+    public GameObject pinkGhost;
+    public GameObject blueGhost;
+    public GameObject orangeGhost;
 
     public enum GhostMode
     {
