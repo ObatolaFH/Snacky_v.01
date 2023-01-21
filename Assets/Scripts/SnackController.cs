@@ -26,6 +26,10 @@ public class SnackController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (gameObject.GetComponent<SpriteRenderer>() == null)
+        {
+            hasPoint = false;
+        }
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         RaycastHit2D[] hitsDown;
