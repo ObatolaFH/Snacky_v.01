@@ -1,16 +1,44 @@
 using System;
 using UnityEngine;
 
-public class mazeBuilder : MonoBehaviour
-{
-    //private SpriteRenderer spriteRenderer;
-    //public Sprite test;
-    public Transform parent;
-    public float factor;
+public class mazeBuilder : MonoBehaviour {
 
-    //public Sprite one;
-    // Start is called before the first frame update
-    int[,] mazeAr = new int[27, 25] {
+    public Transform parent;
+    public float factor; // The factor is the width between the MazeParts
+
+    // Standard Array for an empy Maze with only the needed fixed Points
+    int[,] mazeLevel00 = new int[27, 25] {
+                                    { 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1,31, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5 },
+                                    {31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0,31 },
+                                    { 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 1, 1, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5 }
+    };
+
+    // Maze Array for the 1st Level
+    int[,] mazeLevel01 = new int[27, 25] {
                                     { 3, 1, 7, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 1, 4 },
                                     { 2, 0,22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,22, 0, 2 },
                                     { 2, 0,20,21,21,21,18, 0,27,21,21,21,26,21,21,21,28, 0,17,21,21,21,19, 0, 2 },
@@ -39,37 +67,121 @@ public class mazeBuilder : MonoBehaviour
                                     { 2, 0,22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,22, 0, 2 },
                                     { 6, 1,10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,10, 1, 5 }
     };
-    void Start()
-    {
-        builder(mazeAr);
+
+    // Maze Array for the 2nd Level
+    int[,] mazeLevel02 = new int[27, 25] {
+                                    { 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 6, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 1, 5 },
+                                    {31,31,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31,31,31 },
+                                    {31,31,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31,31,31 },
+                                    {31,31,31,31,31, 2, 0, 0, 0, 0, 3, 1,31, 1, 4, 0, 0, 0, 0, 2,31,31,31,31,31 },
+                                    { 1, 1, 1, 1, 1, 5, 0, 3, 4, 0, 2,31,31,31, 2, 0, 3, 4, 0, 6, 1, 1, 1, 1, 1 },
+                                    {31, 0, 0, 0, 0, 0, 0, 2, 2, 0, 2,31,31,31, 2, 0, 2, 2, 0, 0, 0, 0, 0, 0,31 },
+                                    { 1, 1, 1, 1, 1, 4, 0, 6, 5, 0, 2,31,31,31, 2, 0, 6, 5, 0, 3, 1, 1, 1, 1, 1 },
+                                    {31,31,31,31,31, 2, 0, 0, 0, 0, 6, 1, 1, 1, 5, 0, 0, 0, 0, 2,31,31,31,31,31 },
+                                    {31,31,31,31,31, 2, 0, 0, 0, 0, 0, 0,31, 0, 0, 0, 0, 0, 0, 2,31,31,31,31,31 },
+                                    {31,31,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31,31,31 },
+                                    { 3, 1, 1, 1, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 1, 1, 1, 1, 4 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5 }
+    };
+
+    // Start is called before the first frame update
+    void Start(){
+        builder(mazeLevel00); // use the bulder-function with an mazeLevel-Array
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // builder: creates new GameObjects acording to the Maze Array the create the Gameboard
+    void builder(int[,] maze){
 
-    void builder(int[,] maze)
-    {
+        // Get all GameObjects with "mazeObj" Tag and collects them in the mazeObjects-Array 
         GameObject[] mazeObjects = GameObject.FindGameObjectsWithTag("mazeObj");
+
+        /* In order to get witch nummber represents witch GameObject
         for (int i = 0; i < mazeObjects.Length; i++)
         {
             print(mazeObjects[i].name + ", " + i);
         }
+        */
 
+        // Two for-loops to iterate through the maze-Array
+        for (int x = 0; x < maze.GetLength(0); x++) {
+            for (int y = 0; y < maze.GetLength(1); y++) {
 
-        for (int x = 0; x < maze.GetLength(0); x++)
-        {
-            for (int y = 0; y < maze.GetLength(1); y++)
-            {
+                // new Vector to make sure the GameObjects keep their Rotation
                 Vector3 eulerRotation = new Vector3(mazeObjects[maze[x, y]].transform.eulerAngles.x, mazeObjects[maze[x, y]].transform.eulerAngles.y, mazeObjects[maze[x, y]].transform.eulerAngles.z);
 
+                // make new Instance of the GameObject and place it on the Gameboard
                 GameObject clone = Instantiate(mazeObjects[maze[x, y]], new Vector3(transform.position.x + (y * factor), transform.position.y - (x * factor), 0), Quaternion.Euler(eulerRotation));
-
-                clone.name = x + " " + y + ": " + mazeObjects[maze[x, y]].name;
-                clone.transform.parent = parent;
+                clone.name = x + " " + y + ": " + mazeObjects[maze[x, y]].name; // give the new Instance an new name
+                clone.transform.parent = parent; // ???
             }
         }
     }
+
+
+    /* 
+    -------------------------------------
+     *  0 --> Point
+    
+    THIN
+     * 01 --> thin_straight_horizontal
+     * 02 --> thin_straight_vertical
+     
+     * 03 --> thin_corner_up_left
+     * 04 --> thin_corner_up_right
+     * 05 --> thin_corner_down_right
+     * 06 --> thin_corner_down_left
+     
+     * 07 --> thin_to_thick_up
+     * 08 --> thin_to_thick_left
+     * 09 --> thin_to_thick_right
+     * 10 --> thin_to_thick_down
+    
+    THICK
+     * 11 --> thick_single_right
+     * 12 --> thick_single_left
+
+     * 13 --> thick_double_left
+     * 14 --> thick_double_right
+     * 15 --> thick_double_up
+     * 16 --> thick_double_down
+
+     * 17 --> thick_corner_up_left
+     * 18 --> thick_corner_up_right
+     * 19 --> thick_corner_down_right
+     * 20 --> thick_conrer_down_left
+
+     * 21 --> thick_straight_hor
+     * 22 --> thick_straight_vert
+
+    T_SHAPE
+     * 23 --> t_shape_middle_left
+     * 24 --> t_shape_middle_right
+     * 25 --> t_shape_middle_up
+     * 26 --> t_shape_middle_down
+
+     * 27 --> t_shape_left
+     * 28 --> t_shape_right
+     * 29 --> t_shape_up
+     * 30 --> t_shape_down
+
+     * 31 --> Empty
+    -------------------------------------
+     */
+
+
 }

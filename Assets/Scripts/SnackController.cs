@@ -21,6 +21,8 @@ public class SnackController : MonoBehaviour
     public GameManager gameManager;
     public bool hasPoint = true;
 
+    public bool isGhostStartingNode = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class SnackController : MonoBehaviour
         for (int i = 0; i < hitsDown.Length; i++)
         {
             float distance = Mathf.Abs(hitsDown[i].point.y - transform.position.y);
-            if (distance < 0.5f && hitsDown[i].collider.gameObject.tag != "Player")
+            if (distance < 0.5f && hitsDown[i].collider.gameObject.tag == "mazeObj")
             {
                 canMoveDown = true;
                 snackDown = hitsDown[i].collider.gameObject;
@@ -40,12 +42,12 @@ public class SnackController : MonoBehaviour
         }
 
         RaycastHit2D[] hitsUp;
-        //Raycast going down
+        //Raycast going up
         hitsUp = Physics2D.RaycastAll(transform.position, Vector2.up);
         for (int i = 0; i < hitsUp.Length; i++)
         {
             float distance = Mathf.Abs(hitsUp[i].point.y - transform.position.y);
-            if (distance < 0.5f && hitsUp[i].collider.gameObject.tag != "Player")
+            if (distance < 0.5f && hitsUp[i].collider.gameObject.tag == "mazeObj")
             {
                 canMoveUp = true;
                 snackUp = hitsUp[i].collider.gameObject;
@@ -53,12 +55,12 @@ public class SnackController : MonoBehaviour
         }
 
         RaycastHit2D[] hitsRight;
-        //Raycast going down
+        //Raycast going right
         hitsRight = Physics2D.RaycastAll(transform.position, Vector2.right);
         for (int i = 0; i < hitsRight.Length; i++)
         {
             float distance = Mathf.Abs(hitsRight[i].point.x - transform.position.x);
-            if (distance < 0.5f && hitsRight[i].collider.gameObject.tag != "Player")
+            if (distance < 0.5f && hitsRight[i].collider.gameObject.tag == "mazeObj")
             {
                 canMoveRight = true;
                 snackRight = hitsRight[i].collider.gameObject;
@@ -66,16 +68,22 @@ public class SnackController : MonoBehaviour
         }
 
         RaycastHit2D[] hitsLeft;
-        //Raycast going down
+        //Raycast going left
         hitsLeft = Physics2D.RaycastAll(transform.position, Vector2.left);
         for (int i = 0; i < hitsLeft.Length; i++)
         {
             float distance = Mathf.Abs(hitsLeft[i].point.x - transform.position.x);
-            if (distance < 0.5f && hitsLeft[i].collider.gameObject.tag != "Player")
+            if (distance < 0.5f && hitsLeft[i].collider.gameObject.tag == "mazeObj")
             {
                 canMoveLeft = true;
                 snackLeft = hitsLeft[i].collider.gameObject;
             }
+        }
+
+        if (isGhostStartingNode)
+        {
+            canMoveDown = true;
+            snackDown = gameManager.ghostNodeCenter;
         }
 
     }
@@ -83,7 +91,7 @@ public class SnackController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public GameObject GetSnackFromDirection(string direction)

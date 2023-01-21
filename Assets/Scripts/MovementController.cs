@@ -14,8 +14,10 @@ public class MovementController : MonoBehaviour
     public string lastMovingDirection = "";
 
     public bool canWarp = true;
+
+    public bool isGhost = false;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -41,6 +43,11 @@ public class MovementController : MonoBehaviour
         //Figure out if we are at the center of the current snack
         if (transform.position.x == currentSnack.transform.position.x && transform.position.y == currentSnack.transform.position.y || reverseDirection)
         {
+            if (isGhost)
+            {
+                GetComponent<EnemyController>().ReachedCenterOfNode(currentSnackController);
+            }
+
             if (currentSnackController.isWarpLeftNode && canWarp)
             {
                 currentSnack = gameManager.rightWarpNode;
@@ -58,6 +65,13 @@ public class MovementController : MonoBehaviour
                 canWarp= false;
             }
             else {
+                //if we are not a ghost that is respawning and we are on the start node and we are trying to move down, stop
+                if ((currentSnackController.isGhostStartingNode && direction == "down" && (!isGhost
+                    || GetComponent<EnemyController>().ghostNodeState != EnemyController.GhostNodeStatesEnum.respawning)))
+                {
+                    direction = lastMovingDirection;
+                }
+
                 GameObject newSnack = currentSnackController.GetSnackFromDirection(direction);
                 if (newSnack != null)
                 {
