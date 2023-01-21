@@ -9,7 +9,7 @@ public class mazeBuilder : MonoBehaviour {
     // Standard Array for an empy Maze with only the needed fixed Points
     int[,] mazeLevel00 = new int[27, 25] {
                                     { 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4 },
-                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31, 2 },
                                     { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                                     { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                                     { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
@@ -101,7 +101,7 @@ public class mazeBuilder : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start(){
-        builder(mazeLevel02); // use the bulder-function with an mazeLevel-Array
+        builder(mazeLevel00); // use the bulder-function with an mazeLevel-Array
     }
 
     // builder: creates new GameObjects acording to the Maze Array the create the Gameboard

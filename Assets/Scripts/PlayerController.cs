@@ -10,13 +10,14 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         
         
         movementController = GetComponent<MovementController>();
+        movementController.lastMovingDirection = "left";
     }
 
     // Update is called once per frame
