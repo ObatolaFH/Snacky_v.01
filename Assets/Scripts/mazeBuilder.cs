@@ -101,7 +101,7 @@ public class mazeBuilder : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start(){
-        builder(mazeLevel00); // use the bulder-function with an mazeLevel-Array
+        builder(mazeLevel01); // use the bulder-function with an mazeLevel-Array
     }
 
     // builder: creates new GameObjects acording to the Maze Array the create the Gameboard

@@ -123,8 +123,10 @@ public class SnackController : MonoBehaviour
         if (collision.tag == "Player" && hasPoint)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gameManager.PointCounter += 1;
             hasPoint = false;
+
+            gameManager.collectedPoint(this);
+
         }
     }
 }

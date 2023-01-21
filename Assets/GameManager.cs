@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,15 @@ public class GameManager : MonoBehaviour
     public GameObject rightWarpNode;
 
     public AudioSource siren;
+    public AudioSource munch1;
+    public AudioSource munch2;
+
+    public int currentMunch = 0;
+
+    public int score;
+    public Text scoreText;
+
+    
 
     public GameObject ghostNodeStart;
     public GameObject ghostNodeCenter;
@@ -24,11 +34,12 @@ public class GameManager : MonoBehaviour
 
     public GhostMode currentGhostMode;
 
-    public int PointCounter = 0;
-
     // Start is called before the first frame update
     void Awake()
     {
+        score= 0;
+        currentMunch= 0;
+
         currentGhostMode = GhostMode.chase;
         ghostNodeStart.GetComponent<SnackController>().isGhostStartingNode = true;
 
@@ -42,4 +53,27 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void AddToScore(int amount)
+    {
+        score += amount;
+        scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void collectedPoint(SnackController snackController) { 
+
+        if(currentMunch == 0)
+        {
+            munch1.Play();
+            currentMunch = 1;
+        }
+        else if(currentMunch == 1){
+            munch2.Play();
+            currentMunch = 0;
+        }
+        
+        AddToScore(1);
+    
+    }
+
 }
