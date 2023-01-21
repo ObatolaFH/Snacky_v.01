@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     public void AddToScore(int amount)
     {
         score += amount;
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = score.ToString();
     }
 
     public void collectedPoint(SnackController snackController) { 
