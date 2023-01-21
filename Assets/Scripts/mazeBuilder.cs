@@ -5,6 +5,7 @@ public class mazeBuilder : MonoBehaviour {
 
     public Transform parent;
     public float factor; // The factor is the width between the MazeParts
+    public GameManager gameManager;
 
     // Standard Array for an empy Maze with only the needed fixed Points
     int[,] mazeLevel00 = new int[27, 25] {
@@ -101,7 +102,20 @@ public class mazeBuilder : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start(){
-        builder(mazeLevel02); // use the bulder-function with an mazeLevel-Array
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        builder(mazeLevel01); // use the bulder-function with an mazeLevel-Array
+
+    }
+
+    private void Update()
+    {
+        if (gameManager.LevelUp)
+        {
+            //Reset Game with new Maze
+            print("Reset Game NOW");
+            gameManager.LevelUp = false;
+        }
     }
 
     // builder: creates new GameObjects acording to the Maze Array the create the Gameboard
@@ -121,6 +135,10 @@ public class mazeBuilder : MonoBehaviour {
         for (int x = 0; x < maze.GetLength(0); x++) {
             for (int y = 0; y < maze.GetLength(1); y++) {
 
+                if(mazeObjects[maze[x, y]].name == "Point"){
+                    gameManager.possiblePoints += 1 * gameManager.pointValue;
+                }
+
                 // new Vector to make sure the GameObjects keep their Rotation
                 Vector3 eulerRotation = new Vector3(mazeObjects[maze[x, y]].transform.eulerAngles.x, mazeObjects[maze[x, y]].transform.eulerAngles.y, mazeObjects[maze[x, y]].transform.eulerAngles.z);
 
@@ -130,6 +148,7 @@ public class mazeBuilder : MonoBehaviour {
                 clone.transform.parent = parent; // ???
             }
         }
+
     }
 
 
