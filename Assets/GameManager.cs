@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
             currentMunch = 0;
         }
         
-        AddToScore(1);
+        AddToScore(10);
     
     }
 
