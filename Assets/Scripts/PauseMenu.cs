@@ -26,12 +26,10 @@ public class PauseMenu : MonoBehaviour
         if(AudioListener.pause == false)
         {
             AudioListener.pause = true;
-            Debug.Log("Audiolistener true");
         }
         else
         {
             AudioListener.pause = false;
-            Debug.Log("Audiolistener false");
         }
     }
     
