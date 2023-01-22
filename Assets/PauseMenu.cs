@@ -21,6 +21,18 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
+    public void Mute ()
+    {
+        if(AudioListener.pause == false)
+        {
+            AudioListener.pause = true;
+        }
+        else
+        {
+            AudioListener.pause = false;
+        }
+    }
+    
 
     public void Resume ()
     {
