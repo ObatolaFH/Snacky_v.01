@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public int possiblePoints;
     public int pointValue = 10;
 
-    public int Level = 1;
+    
     public bool LevelUp = false;
 
     public bool newGame;
@@ -86,7 +86,8 @@ public class GameManager : MonoBehaviour
         
         possiblePoints = 5 * pointValue;
 
-        template = 0;
+        
+        
 
         StartCoroutine(Setup());
     }
@@ -123,7 +124,7 @@ public class GameManager : MonoBehaviour
             score = 0;
             scoreText.text = score.ToString();
             lives = 3;
-            level = 2;
+            //level = 2;
         }
         
         snacky.GetComponent<PlayerController>().Setup();

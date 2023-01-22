@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 893db25bef438f74c85f0f06b4f25e45
+guid: 7c7733bdf5b7e3145a287d828c82eb1a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,27 +101,15 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: map_0
+      name: Maze_Template_Red_with_border_0
       rect:
         serializedVersion: 2
-        x: 190
-        y: 363
+        x: 120
+        y: 627
         width: 60
         height: 60
       alignment: 0
@@ -131,18 +119,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e01fd9dbd440f74793f69379adc2c94
-      internalID: -1515619383
+      spriteID: 090576d5d06409e4f8093315909bdc28
+      internalID: 823194167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_1
+      name: Maze_Template_Red_with_border_1
       rect:
         serializedVersion: 2
-        x: 269
-        y: 363
+        x: 59
+        y: 627
         width: 60
         height: 60
       alignment: 0
@@ -152,18 +140,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04354464bcd9512458afe9704d934ae2
-      internalID: -1554641322
+      spriteID: 3ae4047b90426b141855ac77f9ce7bfd
+      internalID: -1212888172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_3
+      name: Maze_Template_Red_with_border_2
       rect:
         serializedVersion: 2
-        x: 393
-        y: 357
+        x: 329
+        y: 455
         width: 60
         height: 60
       alignment: 0
@@ -173,18 +161,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d857473d4786d544ea7c0b7c9b920e85
-      internalID: -261776366
+      spriteID: 4ac7c40e8d845684db5ce9c46daae477
+      internalID: 1029381499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_4
+      name: Maze_Template_Red_with_border_3
       rect:
         serializedVersion: 2
-        x: 393
-        y: 417
+        x: 378
+        y: 455
         width: 60
         height: 60
       alignment: 0
@@ -194,18 +182,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08a028123907dfc49adaf0413105fa2b
-      internalID: -1328512939
+      spriteID: 2e7e892f04f844c4ba4400b1c80e29bd
+      internalID: -1953611383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_5
+      name: Maze_Template_Red_with_border_4
       rect:
         serializedVersion: 2
-        x: 393
-        y: 477
+        x: 270
+        y: 627
         width: 60
         height: 60
       alignment: 0
@@ -215,18 +203,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e22defdf9b6c6164990499252ac18176
-      internalID: -1650545072
+      spriteID: 0f59d59a6f9efb744b0bceae75cbd024
+      internalID: -1937338587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_6
+      name: Maze_Template_Red_with_border_5
       rect:
         serializedVersion: 2
-        x: 333
-        y: 417
+        x: 147
+        y: 573
         width: 60
         height: 60
       alignment: 0
@@ -236,18 +224,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbdb61c49433eff4e9eb8a29bd5dc263
-      internalID: -926631321
+      spriteID: 1e3105ece5c3c334ab21ff149daed7c9
+      internalID: 121376016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_2
+      name: Maze_Template_Red_with_border_6
       rect:
         serializedVersion: 2
-        x: 83
-        y: 481
+        x: 147
+        y: 386
         width: 60
         height: 60
       alignment: 0
@@ -257,18 +245,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8275680c5a679af4b9f2e881b182bd85
-      internalID: -1826628175
+      spriteID: 0aca984ad09ba2d439b7cc017ac70018
+      internalID: 1297309749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_7
+      name: Maze_Template_Red_with_border_7
       rect:
         serializedVersion: 2
-        x: 83
-        y: 556
+        x: 113
+        y: 514
         width: 60
         height: 60
       alignment: 0
@@ -278,29 +266,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 055aa0a4d1a2f7843af8be39cd18ee0a
-      internalID: 186984414
+      spriteID: ce937d8c20dc3d64dbac382c475cb1ee
+      internalID: -977064341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_10
+      name: Maze_Template_Red_with_border_8
       rect:
         serializedVersion: 2
-        x: 265
-        y: 599
+        x: 332
+        y: 83
         width: 60
         height: 60
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b71fc8af87eb51648a0b9f24e8e247b1
-      internalID: 177749657
+      spriteID: c456025acc406e54082ef278333383f0
+      internalID: -1410863325
       vertices: []
       indices: 
       edges: []
@@ -316,17 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      map_4: -1328512939
-      map_6: -926631321
-      map_2: -1826628175
-      map_0: -1515619383
-      map_5: -1650545072
-      map_10: 177749657
-      map_3: -261776366
-      map_7: 186984414
-      map_9: 1371726905
-      map_1: -1554641322
-      map_8: 1757365758
+      Maze_Template_Red_with_border_7: -977064341
+      Maze_Template_Red_with_border_2: 1029381499
+      Maze_Template_Red_with_border_8: -1410863325
+      Maze_Template_Red_with_border_4: -1937338587
+      Maze_Template_Red_with_border_5: 121376016
+      Maze_Template_Red_with_border_6: 1297309749
+      Maze_Template_Red_with_border_1: -1212888172
+      Maze_Template_Red_with_border_0: 823194167
+      Maze_Template_Red_with_border_3: -1953611383
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

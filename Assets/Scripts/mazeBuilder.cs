@@ -49,15 +49,15 @@ public class mazeBuilder : MonoBehaviour {
                                     { 2, 0, 0, 0,22, 0, 0, 0,22, 0,22, 0, 0, 0,22, 0,22, 0, 0, 0,22, 0, 0, 0, 2 },
                                     { 8,21,28, 0,20,21,26,21,19, 0,30, 0,29, 0,30, 0,20,21,26,21,19, 0,27,21, 9 },
                                     { 2, 0, 0, 0, 0, 0,30, 0, 0, 0, 0, 0,22, 0, 0, 0, 0, 0,30, 0, 0, 0, 0, 0, 2 },
-                                    { 2, 0,29, 0,29, 0, 0, 0,17,21,21,21,25,21,21,21,18, 0, 0, 0,29, 0,29, 0, 2 },
-                                    { 2, 0,30, 0,20,21,18, 0,22, 0, 0, 0, 0, 0, 0, 0,22, 0,17,21,19, 0,30, 0, 2 },
-                                    { 2, 0, 0, 0, 0, 0,22, 0,22, 0, 3, 1,31, 1, 4, 0,22, 0,22, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0,29, 0,29, 0, 0, 0,27,28, 0,27,25,28, 0,27,28, 0, 0, 0,29, 0,29, 0, 2 },
+                                    { 2, 0,30, 0,20,21,18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,17,21,19, 0,30, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0,22, 0,29, 0, 3, 1,31, 1, 4, 0,29, 0,22, 0, 0, 0, 0, 0, 2 },
                                     { 6, 1, 1, 1, 1, 0,30, 0,30, 0, 2,31,31,31, 2, 0,30, 0,30, 0, 1, 1, 1, 1, 5 },
                                     {31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,31,31,31, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0,31 },
                                     { 3, 1, 1, 1, 1, 0,29, 0,29, 0, 2,31,31,31, 2, 0,29, 0,29, 0, 1, 1, 1, 1, 4 },
-                                    { 2, 0, 0, 0, 0, 0,22, 0,22, 0, 6, 1, 1, 1, 5, 0,22, 0,22, 0, 0, 0, 0, 0, 2 },
-                                    { 2, 0,29, 0,17,21,19, 0,22, 0, 0, 0,31, 0, 0, 0,22, 0,20,21,18, 0,29, 0, 2 },
-                                    { 2, 0,30, 0,30, 0, 0, 0,20,21,21,21,26,21,21,21,19, 0, 0, 0,30, 0,30, 0, 2 },
+                                    { 2, 0, 0, 0, 0, 0,22, 0,30, 0, 6, 1, 1, 1, 5, 0,30, 0,22, 0, 0, 0, 0, 0, 2 },
+                                    { 2, 0,29, 0,17,21,19, 0, 0, 0, 0, 0,31, 0, 0, 0, 0, 0,20,21,18, 0,29, 0, 2 },
+                                    { 2, 0,30, 0,30, 0, 0, 0,27,28, 0,27,26,28, 0,27,28, 0, 0, 0,30, 0,30, 0, 2 },
                                     { 2, 0, 0, 0, 0, 0,29, 0, 0, 0, 0, 0,22, 0, 0, 0, 0, 0,29, 0, 0, 0, 0, 0, 2 },
                                     { 8,21,28, 0,17,21,25,21,18, 0,29, 0,30, 0,29, 0,17,21,25,21,18, 0,27,21, 9 },
                                     { 2, 0, 0, 0,22, 0, 0, 0,22, 0,22, 0, 0, 0,22, 0,22, 0, 0, 0,22, 0, 0, 0, 2 },
@@ -137,27 +137,34 @@ public class mazeBuilder : MonoBehaviour {
         // Get all GameObjects with "mazeObj" Tag and collects them in the mazeObjects-Array 
         GameObject[] mazeObjects = GameObject.FindGameObjectsWithTag("mazeObj");
 
-        /* In order to get witch nummber represents witch GameObject
+        // In order to get witch nummber represents witch GameObject
         for (int i = 0; i < mazeObjects.Length; i++)
         {
             print(mazeObjects[i].name + ", " + i);
         }
-        */
+        
 
         // Two for-loops to iterate through the maze-Array
         for (int x = 0; x < maze.GetLength(0); x++) {
             for (int y = 0; y < maze.GetLength(1); y++) {
 
-                if(mazeObjects[maze[x, y]].name == "Point"){
+                int objectNumber = maze[x, y];
+
+                if(objectNumber != 0 && objectNumber != 31)
+                {
+                    objectNumber = objectNumber + (template * 31);
+                }
+
+                if (mazeObjects[objectNumber].name == "Point"){
                     gameManager.possiblePoints += 1 * gameManager.pointValue;
                 }
 
                 // new Vector to make sure the GameObjects keep their Rotation
-                Vector3 eulerRotation = new Vector3(mazeObjects[maze[x, y]].transform.eulerAngles.x, mazeObjects[maze[x, y]].transform.eulerAngles.y, mazeObjects[maze[x, y]].transform.eulerAngles.z);
+                Vector3 eulerRotation = new Vector3(mazeObjects[objectNumber].transform.eulerAngles.x, mazeObjects[objectNumber].transform.eulerAngles.y, mazeObjects[objectNumber].transform.eulerAngles.z);
 
                 // make new Instance of the GameObject and place it on the Gameboard
-                GameObject clone = Instantiate(mazeObjects[maze[x, y]], new Vector3(transform.position.x + (y * factor), transform.position.y - (x * factor), 0), Quaternion.Euler(eulerRotation));
-                clone.name = x + " " + y + ": " + mazeObjects[maze[x, y]].name; // give the new Instance an new name
+                GameObject clone = Instantiate(mazeObjects[objectNumber], new Vector3(transform.position.x + (y * factor), transform.position.y - (x * factor), 0), Quaternion.Euler(eulerRotation));
+                clone.name = x + " " + y + ": " + mazeObjects[objectNumber].name; // give the new Instance an new name
                 clone.transform.parent = parent; // ???
             }
         }
