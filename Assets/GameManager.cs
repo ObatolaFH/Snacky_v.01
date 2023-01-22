@@ -92,6 +92,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if (PauseMenu.GameIsPaused)
+        {
+            Time.timeScale = 1f;
+            PauseMenu.GameIsPaused = false;
+        }
+
+
         score = MainMenu.points;
         level = MainMenu.level;
         template = MainMenu.template;

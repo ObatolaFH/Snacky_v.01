@@ -10,7 +10,8 @@ public class MainMenu : MonoBehaviour
     public static int points = -10;
     public void PlayGame ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("SampleScene");;
     }
 
     public void QuitGame ()
