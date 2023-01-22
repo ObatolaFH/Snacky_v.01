@@ -7,6 +7,9 @@ public class mazeBuilder : MonoBehaviour {
     public float factor; // The factor is the width between the MazeParts
     public GameManager gameManager;
 
+    public GameObject[] buildingBlocks;
+    // int buildingBlocksIndex;
+
     // Standard Array for an empy Maze with only the needed fixed Points
     int[,] mazeLevel00 = new int[27, 25] {
                                     { 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4 },
@@ -132,10 +135,11 @@ public class mazeBuilder : MonoBehaviour {
         {
             maze = mazeLevel01;
         }
-        
+
 
         // Get all GameObjects with "mazeObj" Tag and collects them in the mazeObjects-Array 
-        GameObject[] mazeObjects = GameObject.FindGameObjectsWithTag("mazeObj");
+        //GameObject[] mazeObjects = GameObject.FindGameObjectsWithTag("mazeObj");
+        GameObject[] mazeObjects = buildingBlocks;
 
         // In order to get witch nummber represents witch GameObject
         for (int i = 0; i < mazeObjects.Length; i++)

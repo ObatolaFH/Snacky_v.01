@@ -2480,7 +2480,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 847297446}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: backToHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3923,6 +3923,69 @@ MonoBehaviour:
   parent: {fileID: 909783950}
   factor: 0.36
   gameManager: {fileID: 0}
+  buildingBlocks:
+  - {fileID: 2124040619}
+  - {fileID: 653786265}
+  - {fileID: 41393631}
+  - {fileID: 1799887383}
+  - {fileID: 2115761950}
+  - {fileID: 1694015065}
+  - {fileID: 2088352730}
+  - {fileID: 2055782373}
+  - {fileID: 471254627}
+  - {fileID: 921400988}
+  - {fileID: 960019110}
+  - {fileID: 369997325}
+  - {fileID: 1711662591}
+  - {fileID: 1223959501}
+  - {fileID: 717253309}
+  - {fileID: 1409589125}
+  - {fileID: 1574854700}
+  - {fileID: 1518803490}
+  - {fileID: 1465204205}
+  - {fileID: 1495932709}
+  - {fileID: 249636849}
+  - {fileID: 1737316935}
+  - {fileID: 225472565}
+  - {fileID: 1730689337}
+  - {fileID: 1899616675}
+  - {fileID: 1449617408}
+  - {fileID: 1016099808}
+  - {fileID: 149984152}
+  - {fileID: 879940486}
+  - {fileID: 1110223533}
+  - {fileID: 2052200947}
+  - {fileID: 279924327}
+  - {fileID: 832900252}
+  - {fileID: 1526738384}
+  - {fileID: 373989658}
+  - {fileID: 1851770495}
+  - {fileID: 1738649033}
+  - {fileID: 869255450}
+  - {fileID: 1586810665}
+  - {fileID: 32571602}
+  - {fileID: 444192866}
+  - {fileID: 250375002}
+  - {fileID: 1256487971}
+  - {fileID: 1810906336}
+  - {fileID: 657095525}
+  - {fileID: 359975624}
+  - {fileID: 1001607365}
+  - {fileID: 393969077}
+  - {fileID: 60174156}
+  - {fileID: 1644796959}
+  - {fileID: 1530854212}
+  - {fileID: 891562912}
+  - {fileID: 1194645843}
+  - {fileID: 2107146958}
+  - {fileID: 143814711}
+  - {fileID: 1218155334}
+  - {fileID: 416173051}
+  - {fileID: 1502002680}
+  - {fileID: 2098703297}
+  - {fileID: 1081220842}
+  - {fileID: 468405319}
+  - {fileID: 605029543}
 --- !u!1 &921400988
 GameObject:
   m_ObjectHideFlags: 0
@@ -10168,7 +10231,6 @@ MonoBehaviour:
   munch1: {fileID: 2078170752}
   munch2: {fileID: 2078170751}
   currentMunch: 0
-  score: 0
   scoreText: {fileID: 677508586}
   ghostNodeStart: {fileID: 1729214771}
   ghostNodeCenter: {fileID: 671382211}

@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public int currentMunch = 0;
 
-    public int score;
+    public static int score;
     public Text scoreText;
 
     public GameObject ghostNodeStart;
@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        score = MainMenu.points;
         level = MainMenu.level;
         template = MainMenu.template;
 
@@ -159,7 +160,7 @@ public class GameManager : MonoBehaviour
         if (newGame)
         {
             startGameAudio.Play();
-            score = -10;
+            //score = -10;
             scoreText.text = score.ToString();
             lives = 3;
             //level = 2;
@@ -192,6 +193,7 @@ public class GameManager : MonoBehaviour
         siren.Stop();
         if(clearedLevel) 
         {
+            MainMenu.points += score;
             popUpNextLevel.enabled = true;
             homeButton.gameObject.SetActive(true);
             nextLevelButton.gameObject.SetActive(true);

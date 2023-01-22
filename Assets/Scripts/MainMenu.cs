@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public static int level = 1;
     public static int template = 0;
+    public static int points = -10;
     public void PlayGame ()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
