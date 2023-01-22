@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         movementController = GetComponent<MovementController>();
 
+        animator.SetBool("dead", false);
+        animator.SetBool("moving", false);
+
         sprite.flipX = false;
         
         movementController.currentSnack = startNode;
@@ -47,7 +50,7 @@ public class PlayerController : MonoBehaviour
         movementController.lastMovingDirection = "left";
         transform.position = startPos;
         animator.speed = 1;
-        animator.SetBool("moving", false);
+        
     }
     public void Stop()
     {
@@ -109,6 +112,7 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
         animator.SetBool("moving", false);
+        animator.speed = 1;
         animator.SetBool("dead", true);
     }
 }

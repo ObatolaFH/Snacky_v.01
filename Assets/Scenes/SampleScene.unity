@@ -5057,7 +5057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1179637581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10206,6 +10206,11 @@ MonoBehaviour:
   life01: {fileID: 1319836005}
   life02: {fileID: 18912555}
   life03: {fileID: 1021144542}
+  ghostModeTimers: 07000000140000000700000014000000050000001400000005000000
+  ghostModeTimerIndex: 0
+  ghostModeTimer: 0
+  runningTimer: 0
+  completedTimer: 0
   currentGhostMode: 0
 --- !u!4 &2078170749
 Transform:

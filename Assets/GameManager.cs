@@ -81,6 +81,12 @@ public class GameManager : MonoBehaviour
         scatter
     }
 
+    public int[] ghostModeTimers = new int[] { 7, 20, 7, 20, 5, 20, 5 };
+    public int ghostModeTimerIndex;
+    public float ghostModeTimer;
+    public bool runningTimer;
+    public bool completedTimer;
+
     public GhostMode currentGhostMode;
 
     // Start is called before the first frame update
@@ -115,6 +121,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Setup()
     {
+        ghostModeTimer = 0;
+        ghostModeTimerIndex = 0;
+        runningTimer = true;
+        completedTimer = false;
         //if Snacky clears a level, a background will appear covering the level, and the game will pause for 0.1 seconds
         if (clearedLevel)
         {
@@ -201,7 +211,36 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!gameIsRunning)
+        {
+            return;
+        }
+
+        if (!completedTimer && runningTimer)
+        {
+            ghostModeTimer += Time.deltaTime;
+            if (ghostModeTimer >= ghostModeTimers[ghostModeTimerIndex])
+            {
+                ghostModeTimer = 0;
+                ghostModeTimerIndex++;
+                if (currentGhostMode == GhostMode.chase)
+                {
+                    currentGhostMode = GhostMode.scatter;
+                }
+                else
+                {
+                    currentGhostMode = GhostMode.chase;
+                }
+
+                if (ghostModeTimerIndex == ghostModeTimers.Length) 
+                { 
+                    completedTimer = true;
+                    runningTimer = false;
+                    currentGhostMode = GhostMode.chase;
+                }
+            }
+        }
+
     }
 
     public void GotSnackFromNodeController(SnackController snackController)
