@@ -26,11 +26,16 @@ public class SnackController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         if (gameObject.GetComponent<SpriteRenderer>() == null)
         {
             hasPoint = false;
         }
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        else
+        {
+            gameManager.GotSnackFromNodeController(this);
+        }
 
         RaycastHit2D[] hitsDown;
         //Raycast going down
@@ -119,6 +124,15 @@ public class SnackController : MonoBehaviour
         else
         {
             return null;
+        }
+    }
+
+    public void RespawnSnack()
+    {
+        if (gameObject.tag == "mazeObj")
+        {
+            hasPoint = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 

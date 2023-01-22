@@ -9,20 +9,53 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sprite;
     public Animator animator;
 
+    public Vector2 startPos;
+
+    public GameManager gameManager;
+
+    public GameObject startNode;
+
+
     // Start is called before the first frame update
+    /*
     void Awake()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        startPos = new Vector2(0.00f, -0.9375f);
         animator = GetComponentInChildren<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         
         
         movementController = GetComponent<MovementController>();
+
+        startNode = movementController.currentSnack;
+    }
+    */
+
+    public void Setup()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        startPos = new Vector2(0.00f, -0.9375f);
+        animator = GetComponentInChildren<Animator>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        movementController = GetComponent<MovementController>();
+        //print(movementController.currentSnack);
+        print(startNode.name);
+        
+        movementController.currentSnack = startNode;
         movementController.lastMovingDirection = "left";
+        transform.position = startPos;
+        animator.SetBool("moving", false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!gameManager.gameIsRunning)
+        {
+            return;
+        }
+
         animator.SetBool("moving", true);
         
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))

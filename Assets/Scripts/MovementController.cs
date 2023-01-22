@@ -25,6 +25,11 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameManager.gameIsRunning) 
+        {
+            return;
+        }
+
         SnackController currentSnackController = currentSnack.GetComponent<SnackController>();
 
         transform.position = Vector2.MoveTowards(transform.position, currentSnack.transform.position, speed * Time.deltaTime);
