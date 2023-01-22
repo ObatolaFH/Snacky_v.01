@@ -103,6 +103,10 @@ public class EnemyController : MonoBehaviour
             readyToLeaveHome = true;
             leftHomeBefore = true;
         }
+        else if (ghostType == GhostType.pink)
+        {
+            readyToLeaveHome = true;
+        }
     }
 
     // Update is called once per frame

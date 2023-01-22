@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     public AudioSource startGameAudio;
     public int lives;
     public int level;
+    public int template;
 
     public enum GhostMode
     {
@@ -84,6 +85,8 @@ public class GameManager : MonoBehaviour
         
         
         possiblePoints = 5 * pointValue;
+
+        template = 0;
 
         StartCoroutine(Setup());
     }
@@ -120,7 +123,7 @@ public class GameManager : MonoBehaviour
             score = 0;
             scoreText.text = score.ToString();
             lives = 3;
-            level = 1;
+            level = 2;
         }
         
         snacky.GetComponent<PlayerController>().Setup();
@@ -141,8 +144,14 @@ public class GameManager : MonoBehaviour
     void StartGame()
     {
         gameIsRunning = true;
-        print("hi jj j ");
         siren.Play();
+    }
+
+    void StopGame()
+    {
+        gameIsRunning = false;
+        siren.Stop();
+
     }
 
     // Update is called once per frame
@@ -163,7 +172,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    public void collectedPoint(SnackController snackController) { 
+    public IEnumerator collectedPoint(SnackController snackController) { 
 
         if(currentMunch == 0)
         {
@@ -204,12 +213,23 @@ public class GameManager : MonoBehaviour
 
         AddToScore(1*pointValue);
 
+        /*
         if (score == possiblePoints)
         {
             Level++;
             LevelUp = true;
             print("LevelUP to Level:" + Level);
 
+        }
+        */
+
+        if (snacksThatAreLeft == 0)
+        {
+            level++;
+            clearedLevel = true;
+            StopGame();
+            yield return new WaitForSeconds(1);
+            StartCoroutine(Setup());
         }
     }
 

@@ -143,7 +143,7 @@ public class SnackController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             hasPoint = false;
 
-            gameManager.collectedPoint(this);
+            StartCoroutine(gameManager.collectedPoint(this));
 
         }
     }

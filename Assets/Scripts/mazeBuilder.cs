@@ -72,7 +72,7 @@ public class mazeBuilder : MonoBehaviour {
     // Maze Array for the 2nd Level
     int[,] mazeLevel02 = new int[27, 25] {
                                     { 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4 },
-                                    { 2,31, 0, 0, 0, 0, 0, 0,22, 0, 0, 0, 0, 0, 0, 0,22, 0, 0, 0, 0, 0, 0,31, 2 },
+                                    { 2,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31, 2 },
                                     { 2, 0,17,21,21,21,28, 0,22, 0,17,28, 0,21,18, 0,22, 0,27,21,21,21,18, 0, 2 },
                                     { 2, 0,30, 0, 0, 0, 0, 0,22, 0,30, 0, 0, 0,30, 0,22, 0, 0, 0, 0, 0,30, 0, 2 },
                                     { 2, 0, 0, 0,12,11, 0,12,19, 0, 0, 0,29, 0, 0, 0,20,11, 0,12,11, 0, 0, 0, 2 },
@@ -100,11 +100,12 @@ public class mazeBuilder : MonoBehaviour {
                                     { 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5 }
     };
 
+
     // Start is called before the first frame update
     void Start(){
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        builder(mazeLevel01); // use the bulder-function with an mazeLevel-Array
+        builder(gameManager.level, gameManager.template); // use the bulder-function with an mazeLevel-Array
 
     }
 
@@ -119,7 +120,19 @@ public class mazeBuilder : MonoBehaviour {
     }
 
     // builder: creates new GameObjects acording to the Maze Array the create the Gameboard
-    void builder(int[,] maze){
+    void builder(int level, int template){
+        
+        int[,] maze;
+
+        if (level == 2)
+        {
+            maze = mazeLevel02;
+
+        }else
+        {
+            maze = mazeLevel01;
+        }
+        
 
         // Get all GameObjects with "mazeObj" Tag and collects them in the mazeObjects-Array 
         GameObject[] mazeObjects = GameObject.FindGameObjectsWithTag("mazeObj");
