@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         ghostSprite = GetComponent<SpriteRenderer>();
-        eyesSprite = GetComponentInChildren<SpriteRenderer>();
+        
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         movementController = GetComponent<MovementController>();
@@ -120,6 +120,7 @@ public class EnemyController : MonoBehaviour
         {
             readyToLeaveHome = true;
         }
+        SetVisible(true);
     }
 
     // Update is called once per frame
@@ -288,7 +289,7 @@ public class EnemyController : MonoBehaviour
     void DetermineGhostScatterModeDirection()
     {
         string direction = GetClosestDirection(scatterNodes[scatterNodeIndex].transform.position);
-        //scatterNodeIndex++;
+        
         movementController.SetDirection(direction);
     }
 

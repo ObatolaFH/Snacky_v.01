@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
 
     public Image popUpGameOver;
     public Button retryButton;
+
+    public Image life01;
+    public Image life02;
+    public Image life03;
+
     //public TextMeshPro successText;
 
     public enum GhostMode
@@ -81,6 +86,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        level = MainMenu.level;
+        template = MainMenu.template;
+
+        print(MainMenu.level);
+
         newGame = true;
         clearedLevel = false;
 
@@ -139,7 +149,7 @@ public class GameManager : MonoBehaviour
         if (newGame)
         {
             startGameAudio.Play();
-            score = 0;
+            score = -10;
             scoreText.text = score.ToString();
             lives = 3;
             //level = 2;
@@ -260,6 +270,8 @@ public class GameManager : MonoBehaviour
         if (snacksThatAreLeft == 0)
         {
             level++;
+            MainMenu.level++;
+            print(MainMenu.level);
             clearedLevel = true;
             StopGame();
 
@@ -273,6 +285,20 @@ public class GameManager : MonoBehaviour
     public IEnumerator PlayerEaten()
     {
         lives--;
+
+        if (lives == 2)
+        {
+            life03.enabled = false;
+        }
+        else if (lives == 1)
+        {
+            life02.enabled = false;
+        }
+        else
+        {
+            life01.enabled = false;
+        }
+
         hadDeathOnThisLevel = true;
         StopGame();
         yield return new WaitForSeconds(1);

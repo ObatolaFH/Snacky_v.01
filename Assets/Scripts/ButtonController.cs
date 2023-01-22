@@ -21,4 +21,9 @@ public class ButtonController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void HomeScene()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
 }
