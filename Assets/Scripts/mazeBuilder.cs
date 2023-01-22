@@ -124,7 +124,7 @@ public class mazeBuilder : MonoBehaviour {
         
         int[,] maze;
 
-        if (level == 2)
+        if (level % 2 == 0)
         {
             maze = mazeLevel02;
 
