@@ -26,10 +26,15 @@ public class PauseMenu : MonoBehaviour
         if(AudioListener.pause == false)
         {
             AudioListener.pause = true;
+            if(AudioListener.volume == 0)
+            {
+                AudioListener.volume = 0.5f;
+            }
         }
         else
         {
             AudioListener.pause = false;
+            AudioListener.volume = 0.5f;
         }
     }
     
