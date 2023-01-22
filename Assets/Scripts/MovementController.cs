@@ -19,6 +19,11 @@ public class MovementController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
+        if (this.tag == "Enemy")
+        {
+            speed = (float)(0.75 * (1.12 * MainMenu.level));
+        }
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 

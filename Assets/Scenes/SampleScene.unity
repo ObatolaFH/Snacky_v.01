@@ -5839,7 +5839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   currentSnack: {fileID: 0}
-  speed: 3
+  speed: 0
   direction: 
   lastMovingDirection: 
   canWarp: 1
@@ -6456,7 +6456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   currentSnack: {fileID: 0}
-  speed: 3
+  speed: 0
   direction: 
   lastMovingDirection: 
   canWarp: 1
@@ -7952,7 +7952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   currentSnack: {fileID: 0}
-  speed: 3
+  speed: 0
   direction: 
   lastMovingDirection: 
   canWarp: 1
@@ -9631,7 +9631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   currentSnack: {fileID: 0}
-  speed: 3
+  speed: 0
   direction: 
   lastMovingDirection: 
   canWarp: 1
