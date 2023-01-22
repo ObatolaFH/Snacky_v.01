@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,9 +56,19 @@ public class GameManager : MonoBehaviour
     public bool clearedLevel;
 
     public AudioSource startGameAudio;
+    public AudioSource death;
+
     public int lives;
     public int level;
     public int template;
+
+    public Image popUpNextLevel;
+    public Button homeButton;
+    public Button nextLevelButton;
+
+    public Image popUpGameOver;
+    public Button retryButton;
+    //public TextMeshPro successText;
 
     public enum GhostMode
     {
@@ -110,6 +121,7 @@ public class GameManager : MonoBehaviour
 
         if (clearedLevel || newGame)
         {
+            snacksThatAreLeft = totalSnacks;
             waitTimer = 4;
             //Snack will respawn when Snacky starts a new level or restarts the game
             for (int i = 0; i < snackControllers.Count; i++)
@@ -117,6 +129,12 @@ public class GameManager : MonoBehaviour
                 snackControllers[i].RespawnSnack();
             }
         }
+        popUpNextLevel.enabled = false;
+        homeButton.gameObject.SetActive(false);
+        nextLevelButton.gameObject.SetActive(false);
+
+        popUpGameOver.enabled = false;
+        retryButton.gameObject.SetActive(false);
 
         if (newGame)
         {
@@ -152,7 +170,22 @@ public class GameManager : MonoBehaviour
     {
         gameIsRunning = false;
         siren.Stop();
+        if(clearedLevel) 
+        {
+            popUpNextLevel.enabled = true;
+            homeButton.gameObject.SetActive(true);
+            nextLevelButton.gameObject.SetActive(true);
+            snacky.GetComponent<PlayerController>().Stop();
+        }
 
+        if (lives <= 0)
+        {
+            popUpGameOver.enabled = true;
+            homeButton.gameObject.SetActive(true);
+            retryButton.gameObject.SetActive(true);
+            snacky.GetComponent<PlayerController>().Stop();
+        }
+        
     }
 
     // Update is called once per frame
@@ -229,9 +262,34 @@ public class GameManager : MonoBehaviour
             level++;
             clearedLevel = true;
             StopGame();
-            yield return new WaitForSeconds(1);
-            StartCoroutine(Setup());
+
+            if (!clearedLevel)
+            {
+                yield return new WaitForSeconds(1);
+                StartCoroutine(Setup());
+            }
         }
     }
+    public IEnumerator PlayerEaten()
+    {
+        lives--;
+        hadDeathOnThisLevel = true;
+        StopGame();
+        yield return new WaitForSeconds(1);
 
+        redGhostController.SetVisible(false);
+        blueGhostController.SetVisible(false);
+        orangeGhostController.SetVisible(false);
+        pinkGhostController.SetVisible(false);
+
+        snacky.GetComponent<PlayerController>().Death();
+        death.Play();
+        yield return new WaitForSeconds(3);
+
+        if (lives > 0) 
+        {
+            StartCoroutine(Setup());
+        }
+ 
+    }
 }

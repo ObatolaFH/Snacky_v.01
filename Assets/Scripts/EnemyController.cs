@@ -50,10 +50,17 @@ public class EnemyController : MonoBehaviour
     public int scatterNodeIndex;
 
     public bool leftHomeBefore = false;
+    public bool isVisible = true;
+
+    public SpriteRenderer ghostSprite;
+    public SpriteRenderer eyesSprite;
 
     // Start is called before the first frame update
     void Awake()
     {
+        ghostSprite = GetComponent<SpriteRenderer>();
+        eyesSprite = GetComponentInChildren<SpriteRenderer>();
+
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         movementController = GetComponent<MovementController>();
         
@@ -90,13 +97,19 @@ public class EnemyController : MonoBehaviour
     public void Setup()
     {
         ghostNodeState = startGhostNodeState;
+        readyToLeaveHome = false;
 
         movementController.currentSnack = startingNode;
         transform.position = startingNode.transform.position;
 
+        movementController.direction = "";
+        movementController.lastMovingDirection = "";
+
         scatterNodeIndex = 0;
 
         isFrightened = false;
+
+        leftHomeBefore = false;
 
         if (ghostType == GhostType.red)
         {
@@ -112,6 +125,19 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if we are visible show our sprites
+        if (isVisible)
+        {
+            ghostSprite.enabled = true;
+            eyesSprite.enabled = true;
+        }
+        //hide our sprites
+        else
+        {
+            ghostSprite.enabled = false;
+            eyesSprite.enabled = false;
+        }
+
         if(!gameManager.gameIsRunning)
         {
             return;
@@ -414,5 +440,27 @@ public class EnemyController : MonoBehaviour
         }
 
         return newDirection;
+    }
+
+    public void SetVisible(bool newIsVisible)
+    {
+        isVisible = newIsVisible;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            //get eaten
+            if (isFrightened)
+            {
+
+            }
+            //eat player
+            else
+            {
+                StartCoroutine(gameManager.PlayerEaten());
+            }
+        }
     }
 }
